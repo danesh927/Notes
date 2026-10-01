@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಅಧ್ಯಾಯಗಳು</title>
+    <!-- ಕನ್ನಡ ಅಕ್ಷರಗಳಿಗಾಗಿ ಗೂಗಲ್ ಫಾಂಟ್ -->
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anek Kannada', sans-serif;
+        }
+
+        body {
+            /* ಮುಖ್ಯ ಪೇಜ್‌ನಂತೆಯೇ ಅನಿಮೇಟೆಡ್ ಹಿನ್ನೆಲೆ */
+            background: linear-gradient(-45deg, #1d2671, #c33764, #1d2671);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ನ್ಯಾವಿಗೇಷನ್ ಬಾರ್ (ಹಿಂದಕ್ಕೆ ಹೋಗುವ ಬಟನ್ ಮತ್ತು ಶೀರ್ಷಿಕೆ) */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(-5px);
+        }
+
+        .nav-bar h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+        }
+
+        /* ಅಧ್ಯಾಯಗಳ ಪಟ್ಟಿ ಕಂಟೈನರ್ */
+        .chapter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* ಅಧ್ಯಾಯದ ಕಾರ್ಡ್ ಸ್ಟೈಲ್ (Glassmorphism List) */
+        .chapter-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .chapter-card:hover {
+            transform: translateX(15px) !important;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chapter-no {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            box-shadow: inset 0 2px 5px rgba(255,255,255,0.3);
+        }
+
+        .chapter-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        @keyframes fadeInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ಮೊಬೈಲ್ ರೆಸ್ಪಾನ್ಸಿವ್ */
+        @media (max-width: 600px) {
+            .nav-bar h1 { font-size: 1.8rem; }
+            .back-btn { padding: 8px 15px; font-size: 0.9rem; position: static; margin-right: auto;}
+            .nav-bar { justify-content: space-between; }
+            .chapter-card { padding: 1rem 1.5rem; }
+            .chapter-title { font-size: 1.2rem; }
+            .chapter-no { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <!-- ಮುಖ್ಯ ಪೇಜ್‌ಗೆ ಲಿಂಕ್ -->
+        <a href="/Main/Hero.html" class="back-btn">⬅ ಹಿಂದಕ್ಕೆ</a>
+        
+        <!-- ನೀವು ಯಾವ ವಿಷಯದ ಪೇಜ್ ಮಾಡುತ್ತೀರೋ ಅದರ ಹೆಸರು ಇಲ್ಲಿ ಬದಲಾಯಿಸಿ -->
+        <h1 id="subjectTitle">ವಿಷಯ: ಕನ್ನಡ</h1> 
+    </div>
+
+    <div class="chapter-container" id="chapterList">
+        <!-- ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ಮೂಲಕ ಅಧ್ಯಾಯಗಳು ಇಲ್ಲಿ ಸೇರ್ಪಡೆಯಾಗುತ್ತವೆ -->
+    </div>
+
+    <script>
+        // ಅಧ್ಯಾಯಗಳ ಪಟ್ಟಿ (ನಿಮ್ಮ ನೋಟ್ಸ್/ಪೇಜ್‌ಗಳಿಗೆ ತಕ್ಕಂತೆ ಇದನ್ನು ಬದಲಾಯಿಸಿ)
+        const chapters = [
+            { no: '೧', title: 'ಕನ್ನಡ ಭಾಷೆಯ ಉಗಮ ಮತ್ತು ವಿಕಾಸ', link: 'kan_chapter1.html' },
+            { no: '೨', title: 'ಕನ್ನಡ ವ್ಯಾಕರಣದ ಮೂಲಭೂತ ಅಂಶಗಳು', link: 'kan_chapter2.html' },
+            { no: '೩', title: 'ಛಂದಸ್ಸು ಮತ್ತು ಅಲಂಕಾರ', link: 'kan_chapter3.html' },
+            { no: '೪', title: 'ಪ್ರಾಚೀನ ಕನ್ನಡ ಸಾಹಿತ್ಯ', link: 'kan_chapter4.html' },
+            { no: '೫', title: 'ಆಧುನಿಕ ಕವಿಗಳು ಮತ್ತು ಕೃತಿಗಳು', link: 'kan_chapter5.html' }
+        ];
+
+        const chapterContainer = document.getElementById('chapterList');
+
+        // ಡೈನಾಮಿಕ್ ಆಗಿ ಕಾರ್ಡ್‌ಗಳನ್ನು ಮತ್ತು ಅನಿಮೇಷನ್ ಲೋಡ್ ಮಾಡುವುದು
+        chapters.forEach((chapter, index) => {
+            const card = document.createElement('a');
+            card.href = chapter.link; // ನಿಮ್ಮ html ಪೇಜ್ ಲಿಂಕ್
+            card.className = 'chapter-card';
+            
+            // ಪ್ರತಿಯೊಂದು ಅಧ್ಯಾಯಕ್ಕೂ staggered ಅನಿಮೇಷನ್ (ಒಂದಾದ ಮೇಲೊಂದು ಬರುವಂತೆ)
+            card.style.animation = `slideInRight 0.5s ease forwards ${index * 0.15}s`;
+            
+            card.innerHTML = `
+                <div class="chapter-no">${chapter.no}</div>
+                <div class="chapter-title">${chapter.title}</div>
+            `;
+            
+            chapterContainer.appendChild(card);
+        });
+    </script>
+</body>
+</html>
